@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Message Center</title>
+    <meta http-equiv="X_UA_Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Messages</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" />
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous" />
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<form  action="#" th:action="@{/post}" th:object="${user}" method="post">
+    <div class="form-group">
+        <input type="hidden" th:field="*{id}" />
+
+        <level for="message"></level>Message: <textarea rows="4" th:field="*{content}" />
+        <span th:if="${#fields.hasErrors('content')}"
+              th:errors="*{content}"></span> <br />
+
+
+        Date Posted: <input type="date"  th:field="*{postedDate}" />
+        <span th:if="${#fields.hasErrors('postedDate')}"
+              th:errors="*{postedDate}"></span> <br />
+
+
+        Posted By: <input type="text" th:field="*{sentBy}" />
+        <span th:if="${#fields.hasErrors('sentBy')}"
+              th:errors="*{sentBy}"></span> <br />
+
+
+    </div>
+    <button class="btn btn-success " type="submit">POST</button>
+</form>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+</body>
+</html>
